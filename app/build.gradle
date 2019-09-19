@@ -1,34 +1,72 @@
 apply plugin: 'com.android.application'
-
 apply plugin: 'kotlin-android'
-
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+
+import com.kemalatli.buildsrc.App
+import com.kemalatli.buildsrc.Libs
 
 android {
-    compileSdkVersion 28
-    buildToolsVersion "29.0.1"
+    compileSdkVersion App.compileSDK
+    buildToolsVersion App.buildTools
     defaultConfig {
-        applicationId "com.kemalatli.techchallenge"
-        minSdkVersion 19
-        targetSdkVersion 28
+        applicationId App.ID
+        minSdkVersion App.minSDK
+        targetSdkVersion App.targetSDK
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
-        release {
-            minifyEnabled false
+        debug {
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
+        release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    testOptions {
+        unitTests.includeAndroidResources true
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
     }
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation"org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    implementation 'androidx.appcompat:appcompat:1.1.0'
-    implementation 'androidx.core:core-ktx:1.1.0'
-    testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'androidx.test:runner:1.2.0'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+
+    implementation Libs.AndroidX.Lifecycle.livedata
+    implementation Libs.AndroidX.Lifecycle.runtime
+    implementation Libs.AndroidX.constraintlayout
+
+    implementation Libs.Koin.koin
+    implementation Libs.Koin.scope
+    implementation Libs.Koin.viewmodel
+
+    implementation Libs.Arch.mvrx
+    implementation Libs.Epoxy.epoxy
+    implementation Libs.Epoxy.paging
+    implementation Libs.Epoxy.dataBinding
+    kapt Libs.Epoxy.processor
+
+    implementation Libs.RxJava.rxJava
+    implementation Libs.RxJava.rxKotlin
+    implementation Libs.RxJava.rxAndroid
+    implementation Libs.RxJava.binding
+    implementation Libs.RxJava.binding_appcompat
+
+    implementation Libs.OkHttp.okhttp
+    implementation Libs.OkHttp.loggingInterceptor
+
+    implementation Libs.Retrofit.retrofit
+    implementation Libs.Retrofit.retrofit_rxjava_adapter
+    implementation Libs.Retrofit.gsonConverter
+
+
 }
