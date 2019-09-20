@@ -102,6 +102,7 @@ object Libs {
 
     object Arch{
         val mvrx = "com.airbnb.android:mvrx:1.0.2"
+        val mvrxTesting = "com.airbnb.android:mvrx-testing:1.0.2"
     }
 
     object Test{
