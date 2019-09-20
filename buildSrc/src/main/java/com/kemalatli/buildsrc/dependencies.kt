@@ -67,6 +67,10 @@ object Libs {
         }
     }
 
+    object Material{
+        val core = "com.google.android.material:material:1.1.0-alpha10"
+    }
+
     object RxJava {
         val rxJava = "io.reactivex.rxjava2:rxjava:2.2.8"
         val rxKotlin = "io.reactivex.rxjava2:rxkotlin:2.3.0"

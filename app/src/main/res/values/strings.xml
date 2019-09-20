@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">Tech Challenge</string>
+    <string name="login_header">MARKETİM</string>
+    <string name="login_placeholder_username">Kullanıcı Adı</string>
+    <string name="login_placeholder_password">Şifre</string>
+    <string name="login_remember_me">Beni Hatırla</string>
+    <string name="login_action">Giriş</string>
 </resources>
