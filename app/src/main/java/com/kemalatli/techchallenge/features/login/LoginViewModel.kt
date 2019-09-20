@@ -20,6 +20,11 @@ class LoginViewModel(state:LoginState, private val loginRepository: LoginReposit
         copy(status = status)
     }
 
+    fun logout() = setState {
+        loginRepository.logout()
+        copy(status = null)
+    }
+
 
     companion object:MvRxViewModelFactory<LoginViewModel, LoginState>{
         override fun create(viewModelContext: ViewModelContext, state: LoginState): LoginViewModel? {

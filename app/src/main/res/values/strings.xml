@@ -5,4 +5,6 @@
     <string name="login_placeholder_password">Şifre</string>
     <string name="login_remember_me">Beni Hatırla</string>
     <string name="login_action">Giriş</string>
+    <string name="orders_my_order">Siparişlerim</string>
+    <string name="orders_logout">Çıkış Yap</string>
 </resources>

@@ -72,4 +72,9 @@
         <item name="android:textAppearance">@style/TextAppearance.TechChallenge</item>
     </style>
 
+    <!-- Outlined button style -->
+    <style name="Widget.TechChallenge.Button.Outlined" parent="Widget.MaterialComponents.Button.OutlinedButton">
+        <item name="strokeColor">@color/accent</item>
+    </style>
+
 </resources>

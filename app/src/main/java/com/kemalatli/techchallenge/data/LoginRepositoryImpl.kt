@@ -5,6 +5,8 @@ import com.kemalatli.techchallenge.domain.LoginRepository
 
 class LoginRepositoryImpl(private val techPrefs: TechPrefs):LoginRepository {
 
+    override fun logout() = techPrefs.deleteLogin()
+
     override fun isLoggedIn(): Boolean = techPrefs.isLogged
 
     override fun login(username: String, password: String, rememberCredentials: Boolean): Status<Boolean> {
