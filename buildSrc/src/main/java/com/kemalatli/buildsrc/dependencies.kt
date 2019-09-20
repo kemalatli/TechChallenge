@@ -104,4 +104,8 @@ object Libs {
         val mvrx = "com.airbnb.android:mvrx:1.0.2"
     }
 
+    object Test{
+        val junit = "junit:junit:4.12"
+    }
+
 }
