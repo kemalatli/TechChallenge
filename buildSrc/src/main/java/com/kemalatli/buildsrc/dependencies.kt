@@ -107,6 +107,7 @@ object Libs {
 
     object Test{
         val junit = "junit:junit:4.12"
+        val mockk = "io.mockk:mockk:1.9"
     }
 
 }

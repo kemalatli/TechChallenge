@@ -1,24 +1,30 @@
 package com.kemalatli.techchallenge.features.login
 
+import android.os.AsyncTask
+import com.airbnb.mvrx.MvRxViewModelFactory
+import com.airbnb.mvrx.ViewModelContext
 import com.kemalatli.techchallenge.base.data.Status
 import com.kemalatli.techchallenge.base.viewmodel.BaseViewModel
+import com.kemalatli.techchallenge.domain.LoginRepository
+import org.koin.android.ext.android.inject
 
-class LoginViewModel(state:LoginState): BaseViewModel<LoginState>(state) {
+class LoginViewModel(state:LoginState, private val loginRepository: LoginRepository): BaseViewModel<LoginState>(state) {
+
+    init {
+        val initialStatus = if(loginRepository.isLoggedIn()) Status.Success(true) else null
+        setState { copy(status=initialStatus) }
+    }
 
     fun login() = setState {
-        // Check if username is valid
-        if(isUsernameEmpty){
-            return@setState copy(status = Status.Failed("Lütfen kullanıcı adınızı giriniz."))
-        }
-        // Check if username is valid
-        if(isPasswordEmpty){
-            return@setState copy(status = Status.Failed("Lütfen şifrenizi giriniz."))
-        }
-        // Check if login is successful
-        if(isSuccessfulLogin){
-            return@setState copy(status = Status.Success(true))
-        }else{
-            return@setState copy(status = Status.Failed("Kullanıcı adı veya şifre yanlış."))
+        val status = loginRepository.login(username, password, rememberMe)
+        copy(status = status)
+    }
+
+
+    companion object:MvRxViewModelFactory<LoginViewModel, LoginState>{
+        override fun create(viewModelContext: ViewModelContext, state: LoginState): LoginViewModel? {
+            val loginRepository:LoginRepository by viewModelContext.activity.inject()
+            return LoginViewModel(state, loginRepository)
         }
     }
 

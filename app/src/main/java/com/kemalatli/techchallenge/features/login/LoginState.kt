@@ -8,15 +8,15 @@ data class LoginState(
 
     @PersistState
     var username:String = "",
+
     @PersistState
     var password:String = "",
+
+    @PersistState
+    var rememberMe:Boolean = false,
+
     // Login operation status
     val status:Status<Boolean>? = null
 
-):MvRxState{
 
-    val isUsernameEmpty get() = username.isBlank()
-    val isPasswordEmpty get() = password.isBlank()
-    val isSuccessfulLogin get() = (username=="kariyer" && password=="2019ADev")
-
-}
+):MvRxState

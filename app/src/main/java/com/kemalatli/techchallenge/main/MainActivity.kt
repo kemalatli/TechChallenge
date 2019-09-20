@@ -25,8 +25,8 @@ class MainActivity: BaseMvRxActivity() {
         // Listen to auth state
         loginViewModel.selectSubscribe(this, LoginState::status){
             when(it){
-                is Status.Success -> navigateTo(OrdersFragment())
                 is Status.Failed -> toast(it.message)
+                is Status.Success -> navigateTo(OrdersFragment())
                 else ->  navigateTo(LoginFragment())
             }
         }

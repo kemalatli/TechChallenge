@@ -72,6 +72,7 @@ dependencies {
     implementation Libs.Retrofit.gsonConverter
 
     testImplementation Libs.Test.junit
+    testImplementation Libs.Test.mockk
     testImplementation Libs.Arch.mvrxTesting
 
 }
