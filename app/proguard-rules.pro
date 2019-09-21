@@ -152,3 +152,7 @@
 # kept as they are accessed via reflection.
 -keepnames class com.airbnb.mvrx.MvRxState
 -keepnames class * implements com.airbnb.mvrx.MvRxState
+
+-dontwarn com.kemalatli.techchallenge.**
+-keep class com.kemalatli.techchallenge.**
+-keepclassmembers class com.kemalatli.techchallenge.** { *; }

@@ -2,6 +2,7 @@
 <layout>
 
     <data>
+        <variable name="state" type="com.kemalatli.techchallenge.features.order.OrdersState" />
         <variable name="loginViewModel" type="com.kemalatli.techchallenge.features.login.LoginViewModel" />
     </data>
 
@@ -35,14 +36,18 @@
         </com.google.android.material.appbar.AppBarLayout>
 
         <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:id="@+id/swipeRefresh"
+            app:refreshing="@{state.loading}"
             app:layout_constraintTop_toBottomOf="@id/appBar"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toTopOf="@id/bottomActions"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_width="0dp"
+            android:layout_height="0dp">
             <com.airbnb.epoxy.EpoxyRecyclerView
                 android:id="@+id/recyclerView"
+                app:itemSpacing="16dp"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"/>
         </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>

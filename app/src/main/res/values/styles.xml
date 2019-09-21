@@ -33,7 +33,7 @@
 
     </style>
 
-    <!-- Default text appearance -->
+    <!-- Text appearances -->
     <style name="TextAppearance.TechChallenge" parent="TextAppearance.MaterialComponents.Caption">
         <item name="android:textColor">@color/textLabel</item>
         <item name="android:textStyle">normal</item>
@@ -42,19 +42,53 @@
         <item name="android:textSize">12.00sp</item>
     </style>
 
-    <!-- Default toolbar text appearance -->
+    <style name="TextAppearance.TechChallenge.Market">
+        <item name="fontFamily">@font/ubuntu_medium</item>
+        <item name="android:fontFamily">@font/ubuntu_medium</item>
+        <item name="android:textSize">16.00sp</item>
+        <item name="android:textColor">@color/textLabel</item>
+    </style>
+
+    <style name="TextAppearance.TechChallenge.Date">
+        <item name="fontFamily">@font/ubuntu_light</item>
+        <item name="android:fontFamily">@font/ubuntu_light</item>
+        <item name="android:textSize">34.00sp</item>
+        <item name="android:textColor">@color/textLabel</item>
+    </style>
+
+    <style name="TextAppearance.TechChallenge.Month">
+        <item name="fontFamily">@font/ubuntu_medium</item>
+        <item name="android:fontFamily">@font/ubuntu_medium</item>
+        <item name="android:textSize">14.00sp</item>
+        <item name="android:textColor">@color/textLabelSecondary</item>
+    </style>
+
+    <style name="TextAppearance.TechChallenge.Price">
+        <item name="android:textStyle">bold</item>
+        <item name="fontFamily">@font/ubuntu_medium</item>
+        <item name="android:fontFamily">@font/ubuntu_medium</item>
+        <item name="android:textSize">14.00sp</item>
+        <item name="android:textColor">@color/textLabel</item>
+    </style>
+
+    <style name="TextAppearance.TechChallenge.Order">
+        <item name="android:textStyle">bold</item>
+        <item name="fontFamily">@font/ubuntu_light</item>
+        <item name="android:fontFamily">@font/ubuntu_light</item>
+        <item name="android:textSize">14.00sp</item>
+        <item name="android:textColor">@color/textLabelSecondary</item>
+    </style>
+
     <style name="TextAppearance.TechChallenge.Toolbar">
         <item name="android:textColor">@color/textButton</item>
         <item name="android:textStyle">bold</item>
         <item name="android:textSize">16.00sp</item>
     </style>
 
-    <!-- Default button text appearance -->
     <style name="TextAppearance.TechChallenge.Button">
         <item name="android:textColor">@color/textButton</item>
     </style>
 
-    <!-- Default header text appearance -->
     <style name="TextAppearance.TechChallenge.Header" parent="TextAppearance.MaterialComponents.Headline4">
         <item name="android:textStyle">bold</item>
         <item name="fontFamily">@font/ubuntu_bold</item>
@@ -62,6 +96,7 @@
         <item name="android:textSize">27.00sp</item>
         <item name="android:textColor">@color/accent</item>
     </style>
+
 
     <!-- Shape appearances -->
     <style name="AppShapeAppearance.TechChallenge.Small" parent="ShapeAppearance.MaterialComponents.SmallComponent">

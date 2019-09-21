@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable name="order" type="com.kemalatli.techchallenge.model.Order" />
+        <variable name="viewmodel" type="com.kemalatli.techchallenge.features.order.OrdersViewModel" />
+        <variable name="isCollapsed" type="Boolean" />
+    </data>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:padding="8dp"
+            android:onClick="@{()->viewmodel.expandOrCollapseOrder(order.id)}"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <View
+                app:layout_constraintStart_toStartOf="@id/guide"
+                app:layout_constraintEnd_toEndOf="@id/guide"
+                app:layout_constraintTop_toTopOf="@id/date"
+                app:layout_constraintBottom_toBottomOf="@id/productState"
+                android:background="@color/textLabel"
+                android:layout_width="1dp"
+                android:layout_height="0dp"/>
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guide"
+                app:layout_constraintGuide_percent="0.2"
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guide2"
+                app:layout_constraintGuide_percent="0.8"
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/date"
+                android:text="@{order.date}"
+                tools:text="08"
+                android:textAppearance="@style/TextAppearance.TechChallenge.Date"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/guide"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/month"
+                android:text="@{order.properMonth}"
+                tools:text="Haziran"
+                android:textAppearance="@style/TextAppearance.TechChallenge.Month"
+                app:layout_constraintTop_toBottomOf="@id/date"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/guide"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/marketName"
+                android:maxLines="2"
+                android:ellipsize="end"
+                android:textAppearance="@style/TextAppearance.TechChallenge.Market"
+                android:layout_marginStart="16dp"
+                android:text="@{order.marketName}"
+                tools:text="Market 1"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toEndOf="@id/guide"
+                app:layout_constraintEnd_toStartOf="@id/guide2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"/>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/orderName"
+                android:singleLine="true"
+                android:ellipsize="end"
+                android:textAppearance="@style/TextAppearance.TechChallenge.Order"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:text="@{order.orderName}"
+                tools:text="Şampuan 250 ml."
+                app:layout_constraintTop_toBottomOf="@id/marketName"
+                app:layout_constraintStart_toEndOf="@id/guide"
+                app:layout_constraintEnd_toStartOf="@id/guide2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"/>
+
+            <View
+                android:id="@+id/statusBox"
+                app:tintStatus="@{order}"
+                android:background="@drawable/background_status"
+                android:layout_marginStart="16dp"
+                app:layout_constraintStart_toEndOf="@id/guide"
+                app:layout_constraintTop_toTopOf="@id/productState"
+                app:layout_constraintBottom_toBottomOf="@id/productState"
+                android:layout_width="25dp"
+                android:layout_height="25dp">
+            </View>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/productState"
+                app:textColor="@{order}"
+                android:singleLine="true"
+                android:ellipsize="end"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:text="@{order.productState}"
+                tools:text="Hazırlanıyor"
+                app:layout_constraintTop_toBottomOf="@id/orderName"
+                app:layout_constraintStart_toEndOf="@id/statusBox"
+                app:layout_constraintEnd_toStartOf="@id/guide2"
+                android:layout_height="wrap_content"
+                android:layout_width="0dp">
+
+            </androidx.appcompat.widget.AppCompatTextView>
+
+            <ImageView
+                android:id="@+id/chevron"
+                android:rotation="@{isCollapsed ? 0 : 90}"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:src="@drawable/icon_chevron"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+            </ImageView>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/productPrice"
+                android:textAppearance="@style/TextAppearance.TechChallenge.Price"
+                android:text="@{order.properPrice}"
+                android:gravity="end"
+                tools:text="25 TL"
+                android:singleLine="true"
+                android:ellipsize="end"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                app:layout_constraintTop_toBottomOf="@id/chevron"
+                app:layout_constraintStart_toEndOf="@id/guide2"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_height="wrap_content"
+                android:layout_width="0dp">
+            </androidx.appcompat.widget.AppCompatTextView>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <FrameLayout
+            app:isGone="@{isCollapsed}"
+            app:layout_constraintTop_toBottomOf="@id/guide"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:background="@color/backgroundLight"
+            android:layout_width="match_parent"
+            android:layout_height="50dp">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:padding="8dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guide3"
+                    app:layout_constraintGuide_percent="0.2"
+                    android:orientation="vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/orderDetail"
+                    android:textAppearance="@style/TextAppearance.TechChallenge.Order"
+                    android:text="@{order.productDetail.orderDetail}"
+                    android:gravity="center_vertical"
+                    tools:text="Şampuan 250ML."
+                    android:layout_marginStart="16dp"
+                    android:ellipsize="end"
+                    android:singleLine="true"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/guide3"
+                    app:layout_constraintEnd_toStartOf="@id/orderPrice"
+                    android:layout_height="30dp"
+                    android:layout_width="0dp">
+                </androidx.appcompat.widget.AppCompatTextView>
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/orderPrice"
+                    android:textAppearance="@style/TextAppearance.TechChallenge.Price"
+                    android:text="@{order.productDetail.properPrice}"
+                    android:gravity="center_vertical"
+                    tools:text="25 TL"
+                    android:singleLine="true"
+                    android:ellipsize="end"
+                    android:layout_marginEnd="8dp"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_height="30dp"
+                    android:layout_width="wrap_content">
+                </androidx.appcompat.widget.AppCompatTextView>
+
+                <View
+                    app:layout_constraintTop_toBottomOf="@id/orderDetail"
+                    app:layout_constraintStart_toStartOf="@id/orderDetail"
+                    app:layout_constraintEnd_toEndOf="@id/orderPrice"
+                    android:background="@color/textLabelSecondary"
+                    android:layout_width="0dp"
+                    android:layout_height="1dp">
+                </View>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </FrameLayout>
+
+    </LinearLayout>
+
+</layout>
