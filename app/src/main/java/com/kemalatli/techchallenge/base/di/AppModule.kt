@@ -37,10 +37,13 @@ val appModule = module{
             .build()
     }
 
+    // Shared preferences to persist login state
     single { TechPrefs(androidContext()) }
 
+    // Login repository
     single<LoginRepository> { LoginRepositoryImpl(get()) }
 
+    // Order repository
     single<OrdersRepository> { OrdersRepositoryImpl(get()) }
 
 

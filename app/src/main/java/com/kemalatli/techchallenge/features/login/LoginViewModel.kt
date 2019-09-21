@@ -1,6 +1,5 @@
 package com.kemalatli.techchallenge.features.login
 
-import android.os.AsyncTask
 import com.airbnb.mvrx.MvRxViewModelFactory
 import com.airbnb.mvrx.ViewModelContext
 import com.kemalatli.techchallenge.base.data.Status
@@ -15,13 +14,22 @@ class LoginViewModel(state:LoginState, private val loginRepository: LoginReposit
         setState { copy(status=initialStatus) }
     }
 
+    /**
+     * Login with [LoginState.username] and [LoginState.password]
+     */
     fun login() = setState {
         val status = loginRepository.login(username, password, rememberMe)
         copy(status = status)
     }
 
+    /**
+     * Logout and clear [LoginState.status]
+     */
     fun logout() = setState {
+        // Wipe out persisted auth state
         loginRepository.logout()
+        // Null status routes application to login fragment.
+        // This is done via subscription to login state in MainActivity
         copy(status = null)
     }
 

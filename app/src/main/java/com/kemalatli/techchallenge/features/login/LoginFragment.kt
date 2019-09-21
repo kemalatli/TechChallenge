@@ -1,7 +1,6 @@
 package com.kemalatli.techchallenge.features.login
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -23,11 +22,13 @@ class LoginFragment: BaseMvRxFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        // Set initial binding data
         binding?.viewmodel = viewModel
         binding?.executePendingBindings()
     }
 
     override fun invalidate():Unit = withState(viewModel){
+        // Change bound data whenever viewmodel state changes
         binding?.state = it
         binding?.executePendingBindings()
     }

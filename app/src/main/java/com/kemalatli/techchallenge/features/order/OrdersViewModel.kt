@@ -1,11 +1,9 @@
 package com.kemalatli.techchallenge.features.order
 
-import android.util.Log
 import com.airbnb.mvrx.MvRxViewModelFactory
 import com.airbnb.mvrx.ViewModelContext
 import com.kemalatli.techchallenge.base.viewmodel.BaseViewModel
 import com.kemalatli.techchallenge.domain.OrdersRepository
-import com.kemalatli.techchallenge.model.Order
 import io.reactivex.schedulers.Schedulers
 import org.koin.android.ext.android.inject
 
@@ -15,13 +13,18 @@ class OrdersViewModel(state:OrdersState, private val ordersRepository: OrdersRep
         getOrders()
     }
 
+    /**
+     * Fetch orders from backend and set returned value to [OrdersState]
+     */
     fun getOrders(){
         ordersRepository.getOrders().subscribeOn(Schedulers.io()).execute {
-            Log.d("order state","$it")
             copy(ordersRequest=it)
         }
     }
 
+    /**
+     * Toggle between expanded and collapsed states by changing [OrdersState.expandedOrders]
+     */
     fun expandOrCollapseOrder(orderId:String) = setState {
         val list = arrayListOf<String>()
         list.addAll(expandedOrders)

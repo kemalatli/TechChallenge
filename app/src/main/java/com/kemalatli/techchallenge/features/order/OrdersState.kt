@@ -13,7 +13,9 @@ data class OrdersState(
 
 ):MvRxState{
 
+    // Sort orders by descending date
     val orders:List<Order> get() = (ordersRequest.invoke() ?: arrayListOf()).sortedByDescending { it.month + it.date }
+    // Send loading information whenever orders are being loaded
     val isLoading get() = ordersRequest is Loading
 
 }

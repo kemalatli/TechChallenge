@@ -9,6 +9,9 @@ class LoginRepositoryImpl(private val techPrefs: TechPrefs):LoginRepository {
 
     override fun isLoggedIn(): Boolean = techPrefs.isLogged
 
+    /**
+     * Login via credentials and persist them if specified in [rememberCredentials]
+     */
     override fun login(username: String, password: String, rememberCredentials: Boolean): Status<Boolean> {
         // Check if username is valid
         if(username.isBlank()){

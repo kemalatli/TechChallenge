@@ -1,10 +1,8 @@
 package com.kemalatli.techchallenge.main
 
 import android.os.Bundle
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.airbnb.mvrx.BaseMvRxActivity
-import com.airbnb.mvrx.BaseMvRxFragment
 import com.airbnb.mvrx.viewModel
 import com.kemalatli.techchallenge.R
 import com.kemalatli.techchallenge.base.data.Status
@@ -32,6 +30,9 @@ class MainActivity: BaseMvRxActivity() {
         }
     }
 
+    /**
+     * Route navigation requests to support fragment manager.
+     */
     private fun navigateTo(fragment: Fragment){
         supportFragmentManager.beginTransaction().replace(R.id.mainContainer ,fragment).commit()
     }

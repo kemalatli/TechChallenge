@@ -9,7 +9,6 @@ import com.airbnb.mvrx.activityViewModel
 import com.airbnb.mvrx.withState
 import com.kemalatli.techchallenge.ItemOrderBindingModel_
 import com.kemalatli.techchallenge.databinding.FragmentOrdersBinding
-import com.kemalatli.techchallenge.databinding.ItemOrderBinding
 import com.kemalatli.techchallenge.features.login.LoginViewModel
 
 class OrdersFragment: BaseMvRxFragment() {
@@ -26,13 +25,17 @@ class OrdersFragment: BaseMvRxFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        // Set refresh listener so that we can reload items from viewmodel
         binding?.swipeRefresh?.setOnRefreshListener(viewModel::getOrders)
+        // Set initial binding data
         binding?.loginViewModel = loginViewModel
         binding?.executePendingBindings()
     }
 
     override fun invalidate():Unit = withState(viewModel){ state ->
+        // Change bound data whenever viewmodel state changes
         binding?.state = state
+        // Change recyclerview items whenever viewmodel state changes
         binding?.recyclerView?.withModels {
             state.orders.forEach { order ->
                 ItemOrderBindingModel_()

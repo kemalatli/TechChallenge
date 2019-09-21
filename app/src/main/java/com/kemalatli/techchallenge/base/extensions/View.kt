@@ -1,7 +1,6 @@
 package com.kemalatli.techchallenge.base.extensions
 
 import android.graphics.Color
-import android.graphics.ColorFilter
 import android.graphics.PorterDuff
 import android.os.Build.VERSION.SDK_INT
 import android.os.Build.VERSION_CODES.LOLLIPOP
