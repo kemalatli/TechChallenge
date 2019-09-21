@@ -34,7 +34,11 @@ class MainActivity: BaseMvRxActivity() {
      * Route navigation requests to support fragment manager.
      */
     private fun navigateTo(fragment: Fragment){
-        supportFragmentManager.beginTransaction().replace(R.id.mainContainer ,fragment).commit()
+        supportFragmentManager
+            .beginTransaction()
+            .setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out)
+            .replace(R.id.mainContainer ,fragment)
+            .commit()
     }
 
 }
