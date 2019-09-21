@@ -30,7 +30,8 @@
         <item name="shapeAppearanceSmallComponent">@style/AppShapeAppearance.TechChallenge.Small</item>
         <!-- Shape properties of medium views like cards -->
         <item name="shapeAppearanceMediumComponent">@style/AppShapeAppearance.TechChallenge.Medium</item>
-
+         <!-- Status bar color -->
+        <item name="android:statusBarColor">@color/accent</item>
     </style>
 
     <!-- Text appearances -->
