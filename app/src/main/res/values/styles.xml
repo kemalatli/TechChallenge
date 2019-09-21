@@ -23,7 +23,7 @@
         <item name="textAppearanceCaption">@style/TextAppearance.TechChallenge</item>
         <!-- Text style for buttons -->
         <item name="textAppearanceButton">@style/TextAppearance.TechChallenge.Button</item>
-        <!-- Text style for text fields -->
+        <!-- Text style for input fields -->
         <item name="textInputStyle">@style/Widget.TechChallenge.Input</item>
         <item name="textAppearanceSubtitle1">@style/TextAppearance.TechChallenge</item>
         <!-- Shape properties of small views like buttons -->
@@ -40,6 +40,13 @@
         <item name="fontFamily">@font/ubuntu_medium</item>
         <item name="android:fontFamily">@font/ubuntu_medium</item>
         <item name="android:textSize">12.00sp</item>
+    </style>
+
+    <!-- Default toolbar text appearance -->
+    <style name="TextAppearance.TechChallenge.Toolbar">
+        <item name="android:textColor">@color/textButton</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">16.00sp</item>
     </style>
 
     <!-- Default button text appearance -->

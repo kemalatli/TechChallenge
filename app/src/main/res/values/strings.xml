@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Tech Challenge</string>
+    <string name="app_name">Marketim</string>
     <string name="login_header">MARKETİM</string>
     <string name="login_placeholder_username">Kullanıcı Adı</string>
     <string name="login_placeholder_password">Şifre</string>

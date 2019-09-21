@@ -43,6 +43,7 @@ object Libs {
 
     object AndroidX {
 
+        val swipeRefresh = "androidx.swiperefreshlayout:swiperefreshlayout:1.1.0-alpha02"
         val constraintlayout = "androidx.constraintlayout:constraintlayout:2.0.0-beta2"
 
         object Lifecycle {
