@@ -3,7 +3,6 @@
 
     <data>
         <variable name="state" type="com.kemalatli.techchallenge.features.order.OrdersState" />
-        <variable name="loginViewModel" type="com.kemalatli.techchallenge.features.login.LoginViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -75,7 +74,6 @@
             </com.google.android.material.button.MaterialButton>
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/logout"
-                android:onClick="@{()-> loginViewModel.logout()}"
                 android:layout_marginStart="5dp"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"

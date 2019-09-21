@@ -1,5 +1,6 @@
 package com.kemalatli.techchallenge.features.order
 
+import android.app.AlertDialog
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -8,6 +9,7 @@ import com.airbnb.mvrx.BaseMvRxFragment
 import com.airbnb.mvrx.activityViewModel
 import com.airbnb.mvrx.withState
 import com.kemalatli.techchallenge.ItemOrderBindingModel_
+import com.kemalatli.techchallenge.R
 import com.kemalatli.techchallenge.databinding.FragmentOrdersBinding
 import com.kemalatli.techchallenge.features.login.LoginViewModel
 
@@ -27,8 +29,14 @@ class OrdersFragment: BaseMvRxFragment() {
         super.onViewCreated(view, savedInstanceState)
         // Set refresh listener so that we can reload items from viewmodel
         binding?.swipeRefresh?.setOnRefreshListener(viewModel::getOrders)
-        // Set initial binding data
-        binding?.loginViewModel = loginViewModel
+        // Set prompt for logout
+        binding?.logout?.setOnClickListener {
+            AlertDialog.Builder(context)
+                .setMessage(R.string.orders_prompt_logout)
+                .setNegativeButton(R.string.orders_prompt_logout_no,null)
+                .setPositiveButton(R.string.orders_prompt_logout_yes) { d, v -> loginViewModel.logout() }
+                .show()
+        }
         binding?.executePendingBindings()
     }
 

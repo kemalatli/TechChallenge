@@ -7,4 +7,7 @@
     <string name="login_action">Giriş</string>
     <string name="orders_my_order">Siparişlerim</string>
     <string name="orders_logout">Çıkış Yap</string>
+    <string name="orders_prompt_logout">Oturumu sonlandırmak istediğinize emin misiniz?</string>
+    <string name="orders_prompt_logout_no">Hayır</string>
+    <string name="orders_prompt_logout_yes">Evet</string>
 </resources>

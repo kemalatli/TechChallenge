@@ -30,7 +30,7 @@ class LoginViewModel(state:LoginState, private val loginRepository: LoginReposit
         loginRepository.logout()
         // Null status routes application to login fragment.
         // This is done via subscription to login state in MainActivity
-        copy(status = null)
+        copy(status = null, rememberMe = false)
     }
 
 
